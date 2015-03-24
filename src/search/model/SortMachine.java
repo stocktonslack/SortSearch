@@ -1,5 +1,8 @@
 package search.model;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class SortMachine
 {
 	private long startTime;
@@ -104,6 +107,86 @@ public class SortMachine
 		sortTime = endTime - startTime;
 		
 		return sortTheYoyos;
+	}
+	
+	public int[] partition(int array[] int min, int max)
+	{
+		int min = min;
+		int max = max;
+		int temp;
+		int pivot = array[(min + max) / 2];
+		
+		while (min <= max)
+		{
+			while(array[i] < pivot)
+				min++;
+			while(array[max]> pivot)
+				max--;
+			if(i <= j)
+			{
+				temp = array[min];
+				array [min] = array[max];
+				array [max] = tmp;
+				min--;
+				max++;
+			}
+		}
+		
+//		int min;
+//		int minPosition;
+//		startTime = System.currentTimeMillis();
+//		for(int position = 0; position < toBeSorted.length; position++)
+//		{
+//			minPosition = position;
+//			min = toBeSorted[position];
+//			for(int next = position +1; next < toBeSorted.length; next++)
+//			{
+//				if(toBeSorted[next] < min)
+//				{
+//					
+//				}
+//			}
+//		}
+		
+		return toBeSorted;
+	}
+	
+	public ArrayList<Integer> selectionSortList(ArrayList<Integer> toBeSorted)
+	{
+		int minimum;
+		int minimumPosition;
+		startTime = System.currentTimeMillis();
+		for (int position = 0; position < toBeSorted.size(); position++)
+		{
+			minimumPosition = position;
+			minimum = toBeSorted.size();
+			for (int next = position + 1; next < toBeSorted.size(); next++)
+			{
+				if (toBeSorted.get(next) < minimum)
+				{
+					minimum = toBeSorted.get(next);
+					minimumPosition = next;
+				}
+
+			}
+			if (minimumPosition != position)
+			{
+				swap(toBeSorted, position, minimumPosition);
+			}
+		}
+		endTime = System.currentTimeMillis();
+
+		sortTime = endTime - startTime;
+
+		return toBeSorted;
+	}
+
+	private void swap(ArrayList<Integer> toBeSorted, int position, int minimumPosition)
+	{
+		int temp = (int) toBeSorted.get(position);
+		toBeSorted.set(position, temp);
+		toBeSorted.set(minimumPosition, temp);
+		
 	}
 
 	private void swap(Yoyo[] array, int position, int change)
