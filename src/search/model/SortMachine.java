@@ -50,7 +50,7 @@ public class SortMachine
 		return toBeSorted;
 	}
 
-	public double[] selectioSort(double[] toBeSorted)
+	public double[] selectionSort(double[] toBeSorted)
 	{
 		int minimumPosition;
 		double min;
@@ -109,46 +109,44 @@ public class SortMachine
 		return sortTheYoyos;
 	}
 	
-	public int[] partition(int array[] int min, int max)
+	public int[] partition(int array[], int min, int max)
 	{
-		int min = min;
-		int max = max;
+		int minimum = 0;
+		int maximum = 0;
 		int temp;
-		int pivot = array[(min + max) / 2];
+		int pivot = array[(minimum + max) / 2];
 		
-		while (min <= max)
+		while (minimum <= max)
 		{
-			while(array[i] < pivot)
-				min++;
+			while(array[minimum] < pivot)
+				minimum++;
 			while(array[max]> pivot)
 				max--;
-			if(i <= j)
+			if(minimum <= maximum)
 			{
-				temp = array[min];
-				array [min] = array[max];
-				array [max] = tmp;
-				min--;
+				temp = array[minimum];
+				array [minimum] = array[max];
+				array [max] = temp;
+				minimum--;
 				max++;
 			}
+		}	
+		
+		return array;
+	}
+	
+	void quickSort(int arr[], int left, int right)
+	{
+		int index = partition(arr, left, right);
+		if(left < index -1)
+		{
+			quickSort(arr, left, index - 1);
+		}
+		if(index < right)
+		{
+			quickSort(arr, index, right);
 		}
 		
-//		int min;
-//		int minPosition;
-//		startTime = System.currentTimeMillis();
-//		for(int position = 0; position < toBeSorted.length; position++)
-//		{
-//			minPosition = position;
-//			min = toBeSorted[position];
-//			for(int next = position +1; next < toBeSorted.length; next++)
-//			{
-//				if(toBeSorted[next] < min)
-//				{
-//					
-//				}
-//			}
-//		}
-		
-		return toBeSorted;
 	}
 	
 	public ArrayList<Integer> selectionSortList(ArrayList<Integer> toBeSorted)
@@ -167,7 +165,6 @@ public class SortMachine
 					minimum = toBeSorted.get(next);
 					minimumPosition = next;
 				}
-
 			}
 			if (minimumPosition != position)
 			{
