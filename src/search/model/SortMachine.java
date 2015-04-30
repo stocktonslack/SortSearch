@@ -109,7 +109,7 @@ public class SortMachine
 		return sortTheYoyos;
 	}
 	
-	public int[] partition(int array[], int min, int max)
+	int partition(int array[], int min, int max)
 	{
 		int minimum = 0;
 		int maximum = 0;
@@ -132,19 +132,19 @@ public class SortMachine
 			}
 		}	
 		
-		return array;
+		return minimum;
 	}
 	
-	void quickSort(int arr[], int left, int right)
+	void quickSort(int arr[], int min, int max)
 	{
-		int index = partition(arr, left, right);
-		if(left < index -1)
+		int index = partition(arr, min, max);
+		if(min < index -1)
 		{
-			quickSort(arr, left, index - 1);
+			quickSort(arr, min, index - 1);
 		}
-		if(index < right)
+		if(index < max)
 		{
-			quickSort(arr, index, right);
+			quickSort(arr, index, max);
 		}
 		
 	}
